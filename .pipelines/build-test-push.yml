@@ -37,7 +37,7 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'Azure JFrog'
-    imageName: 'mansong.jfrog.io/docker/boardgame:$(Build.BuildId)'
+    imageName: 'mansong.jfrog.io/eydemo/boardgame:$(Build.BuildId)'
     collectBuildInfo: true
     buildName: '$(Build.DefinitionName)'
     buildNumber: '$(Build.BuildNumber)'
