@@ -36,6 +36,6 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'Artifactory Docker'
-    repository: 'eydemo'
+    repository: 'eydemo/boardgame'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
