@@ -33,3 +33,14 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
+- task: JFrogDocker@1
+  displayName: 'BuildandPush JFrog'
+  inputs:
+    command: 'Push'
+    artifactoryConnection: 'Azure JFrog'
+    imageName: 'boardgame'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    threads: '3'
+    skipLogin: false
