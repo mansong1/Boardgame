@@ -37,6 +37,6 @@ steps:
   displayName: 'Build and Push to Artifactory'
   inputs:
     containerRegistry: 'Artifactory Docker'
-    repository: 'boardgam'
+    repository: 'boardgame'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
