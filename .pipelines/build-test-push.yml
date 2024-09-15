@@ -33,13 +33,9 @@ steps:
     mavenAuthenticateFeed: false
     effectivePomSkip: false
     sonarQubeRunAnalysis: false
-- task: JFrogDocker@1
+- task: Docker@2
   inputs:
-    command: 'Push'
-    artifactoryConnection: 'Azure JFrog'
-    imageName: 'mansong.jfrog.io/eydemo/boardgame:$(Build.BuildId)'
-    collectBuildInfo: true
-    buildName: '$(Build.DefinitionName)'
-    buildNumber: '$(Build.BuildNumber)'
-    threads: '3'
-    skipLogin: false
+    containerRegistry: 'Artifactory Docker'
+    repository: 'mansong.jfrog.io/eydemo/boardgame'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
