@@ -33,8 +33,6 @@ steps:
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
     effectivePomSkip: false
-    sonarQubeRunAnalysis: true
-    sqMavenPluginVersionChoice: 'latest'
 - task: Docker@2
   inputs:
     containerRegistry: 'Artifactory Docker'
