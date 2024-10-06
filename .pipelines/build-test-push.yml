@@ -51,9 +51,23 @@ steps:
 - task: SonarQubePublish@6
   inputs:
     pollingTimeoutSec: '300'
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'JFrog'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    projectKey: 'boardgame'
 - task: Docker@2
   inputs:
-    containerRegistry: 'Artifactory Docker'
-    repository: 'eydemo/boardgame'
-    command: 'buildAndPush'
+    command: 'build'
     Dockerfile: '**/Dockerfile'
+- task: JFrogDocker@1
+  inputs:
+    command: 'Push'
+    artifactoryConnection: 'JFrog'
+    imageName: 'a3b29717058ae467ba86e46099697000-1899007024.eu-west-2.elb.amazonaws.com:80/artifactory/eydemo-docker/boardgame:$(Build.BuildNumber)'
+    collectBuildInfo: true
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+    threads: '3'
+    skipLogin: true
